@@ -6,11 +6,18 @@ import { TestService } from './test.service';
 })
 export class TestComponent {
   title = "Test Component";
+  user:any = {};
   constructor(private testService: TestService){}
   getDetails() {
 	  this.testService.getTests().subscribe(res => {
-		 console.log("res", res); 
+		 
 	  });
+  }
+  save() {
+    console.log("sjdfhj", this.user);
+    this.testService.saveDetails(this.user).subscribe(res => {
+      console.log("responses", res);
+    })
   }
   ngOnInit() {
 	  this.getDetails();
